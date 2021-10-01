@@ -10,7 +10,7 @@ const Header = () => {
   return (
     <HeaderWrapper>
       <Image
-        src="/logo-dedicio-h.svg"
+        src="/images/logo-dedicio-h.svg"
         alt="Dedicio Coelho Logo"
         title="Dedicio Coelho - Front-end Developer"
         width={351}
