@@ -2,7 +2,7 @@ import Image from 'next/image'
 import styled from 'styled-components';
 
 const Wrapper = styled.section`
-  padding: 2rem 0;
+  padding: 3rem 0;
   text-align: center;
 `
 

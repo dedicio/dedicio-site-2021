@@ -1,6 +1,8 @@
 import Head from 'next/head'
 import About from '../components/about.jsx'
+import Articles from '../components/articles.jsx'
 import Contact from '../components/contact.jsx'
+import Footer from '../components/footer.jsx'
 import Header from '../components/header.jsx'
 import Intro from '../components/intro.jsx'
 import Skills from '../components/skills.jsx'
@@ -20,13 +22,12 @@ export default function Home() {
       <main className={styles.main}>
         <Intro />
         <Skills />
+        <Articles />
         <About />
         <Contact />
       </main>
 
-      <footer>
-        Copyright
-      </footer>
+      <Footer />
     </div>
   )
 }
