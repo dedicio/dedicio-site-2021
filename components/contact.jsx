@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import styled from 'styled-components'
 import Section from './section.jsx'
+import LinkedIn from '../public/images/linkedin.svg'
 
 const Icon = ({ url, image, alt, className }) => {
   return (
@@ -19,15 +20,13 @@ const Icon = ({ url, image, alt, className }) => {
 
 const StyledIcon = styled(Icon)`
   margin: 0 0.5rem;
-
-  &:hover {
-    fill: orange;
-  }
 `
 
-const Contact = () => {
+const Contact = (props) => {
+  const title = props.lang === 'en' ? 'Contact' : 'Contato'
+
   return (
-    <Section title="Contact">
+    <Section title={title}>
       <StyledIcon
         url="https://linkedin.com"
         image="linkedin.svg"

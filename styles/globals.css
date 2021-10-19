@@ -34,8 +34,21 @@ body {
 }
 
 a {
-  color: #FF6232;
+  color: #100F0D;
   text-decoration: none;
+  transition: all 0.3s;
+}
+
+a:hover {
+  color: #FF6232;
+}
+
+a:active {
+  color: #00B4B1;
+}
+
+a:hover img {
+  opacity: 1;
 }
 
 * {

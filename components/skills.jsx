@@ -27,9 +27,11 @@ const Paragraph = styled.p`
   margin-bottom: ${$props => getMarginTop($props.size)};
 `
 
-const Skills = () => {
+const Skills = (props) => {
+  const title = props.lang === 'en' ? 'Skills & Tools' : 'Habilidades'
+
   return (
-    <Section title="Skills & Tools">
+    <Section title={title}>
       <Paragraph size="xl">
         JavaScript - Typescript - Node.js - HTML - CSS - Vue.js - Jest
       </Paragraph>

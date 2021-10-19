@@ -30,11 +30,13 @@ const Main = styled.main`
   }
 `
 
+const lang = 'en'
+
 export default function Home() {
   return (
     <Container>
       <Head>
-        <title>Dedicio Coelho - Desenvolvedor Front-End</title>
+        <title>Dedicio Coelho - Front End Developer</title>
         <meta name="description" content="Dedicio Coelho - Front-end Developer" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -42,14 +44,14 @@ export default function Home() {
       <Header />
 
       <Main>
-        <Intro />
-        <Skills />
-        <Articles />
-        <About />
-        <Contact />
+        <Intro lang={lang} />
+        <Skills lang={lang} />
+        <Articles lang={lang} />
+        <About lang={lang} />
+        <Contact lang={lang} />
       </Main>
 
-      <Footer />
+      <Footer lang={lang} />
     </Container>
   )
 }

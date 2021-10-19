@@ -4,21 +4,39 @@ import DedicioCoelho from "../public/images/dedicio-coelho.png";
 
 const IntroWrapper = styled.section`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
 `
 
 const IntroLeft = styled.div`
-  width: 50%;
-  text-align: right;
-  padding-left: 4rem;
+  text-align: center;
+
+  @media (min-width: 768px) {
+    padding-left: 4rem;
+    text-align: right;
+    width: 50%;
+    order: 1;
+  }
 `
 
 const IntroRight = styled.div`
-  width: 50%;
+  text-align: center;
+
+  @media (min-width: 768px) {
+    text-align: left;
+    width: 50%;
+    order: 2;
+  }
 `
 
 const Title = styled.h1`
-  margin-top: 5rem;
+  margin-bottom: 2rem;
+  @media (min-width: 768px) {
+    margin-top: 5rem;
+  }
 `
 
 const TitleStrong = styled.span`
@@ -37,19 +55,15 @@ const TitleLight = styled.span`
   margin-top: -1rem;
 `
 
+const Hello = styled.strong`
+  display: block;
+  font-weight: bold;
+  font-size: 2rem;
+`
+
 const Intro = (props) => {
   return (
     <IntroWrapper>
-      <IntroLeft>
-        <Title>
-          <TitleStrong>Front-end</TitleStrong>
-          <TitleLight>Developer</TitleLight>
-        </Title>
-        <p>
-        <strong>Olá!</strong> <br />
-        Eu sou <strong>Dedício Coelho</strong> e trabalho há mais de 10 anos com web, especializado em desenvolvimento com <strong>JavaScript</strong> e <strong>Node.js</strong>.
-        </p>
-      </IntroLeft>
       <IntroRight>
         <Image
           src={DedicioCoelho}
@@ -57,6 +71,24 @@ const Intro = (props) => {
           width={413}
           priority={true} />
       </IntroRight>
+      <IntroLeft>
+        <Title>
+          <TitleStrong>Front-end</TitleStrong>
+          <TitleLight>Developer</TitleLight>
+        </Title>
+        {props.lang === 'en' 
+          ? <p>
+              <Hello>Hello!</Hello>
+              I am <strong>Dedício Coelho</strong> and I&apos;ve been working with web for over 10 years, specializing in <strong>JavaScript</strong> and <strong>Node.js</strong> development.
+            </p>
+          : <p>
+              <Hello>Olá!</Hello>
+              Eu sou <strong>Dedício Coelho</strong> e trabalho há mais de 10 anos com web, especializado em desenvolvimento com <strong>JavaScript</strong> e <strong>Node.js</strong>.
+            </p>
+
+        }
+      </IntroLeft>
+
     </IntroWrapper>
   )
 }

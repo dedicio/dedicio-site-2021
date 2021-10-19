@@ -1,15 +1,32 @@
 import Section from './section.jsx'
 
-const About = () => {
+const About = (props) => {
+  const isEnglish = props.lang === 'en'
+  const title = isEnglish ? 'About Me' : 'Sobre Mim'
+
   return (
-    <Section title="About">
-      <p><strong>Meu objetivo é fazer coisas que facilitem a vida das pessoas!</strong></p>
+    <Section title={title}>
+      {isEnglish
+        ? <div>
+            <p><strong>My goal is to do things that make people&apos;s lives easier!</strong></p>
 
-      <p>Nascido em uma cidadezinha pequena do interior, curioso desde criança, o conhecimento é minha paixão! Sou formado em Produção Audiovisual, minha carreira com web se iniciou trabalhando com web designer.</p>
+            <p>Born in a small country town, curious since I was a child, the knowledge is my passion! I graduated in Audiovisual Production, my career with internet has been started working as a web designer.</p>
 
-      <p>Com minha paixão por tecnologia e meu anseio por fazerem as coisas funcionarem, foi natural a minha migração para o desenvolvimento!</p>
+            <p>With my passion for technology and my eagerness to make things work, my migration to developing was natural.</p>
 
-      <p>Há mais de 10 anos trabalhando com web, meus olhos continuam brilhando na missão de desenvolver produtos e serviços que as pessoas usem e façam diferença na vida delas.</p>
+            <p>For over 10 years working with the web, my eyes continue to shine on the mission to develop products and services that people use and make a difference in their lives.</p>
+          </div>
+
+        : <div>
+            <p><strong>Meu objetivo é fazer coisas que facilitem a vida das pessoas!</strong></p>
+
+            <p>Nascido em uma cidadezinha pequena do interior, curioso desde criança, o conhecimento é minha paixão! Sou formado em Produção Audiovisual, minha carreira com web se iniciou trabalhando como web designer.</p>
+
+            <p>Com minha paixão por tecnologia e meu anseio por fazer as coisas funcionarem, foi natural a minha migração para o desenvolvimento.</p>
+
+            <p>Há mais de 10 anos trabalhando com web, meus olhos continuam brilhando na missão de desenvolver produtos e serviços que as pessoas usem e façam diferença na vida delas.</p>
+          </div>
+      }
     </Section>
   )
 }
