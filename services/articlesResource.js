@@ -1,9 +1,7 @@
 const baseUrl = 'https://dev.to/api'
-const apiKey = process.env.DEVTO_API_KEY
 
 function request(url, options = {}) {
   const headers = {
-    api_key: apiKey,
     'Content-type': 'application/json'
   };
 
