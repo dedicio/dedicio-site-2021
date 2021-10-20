@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import styled from 'styled-components'
 import Section from './section.jsx'
-import LinkedIn from '../public/images/linkedin.svg'
+import loader from '../services/loader.js'
 
 const Icon = ({ url, image, alt, className }) => {
   return (
@@ -10,6 +10,7 @@ const Icon = ({ url, image, alt, className }) => {
       className={className}
       title={alt}>
       <Image
+        loader={loader}
         src={`/images/${image}`}
         alt={alt}
         width={48}
