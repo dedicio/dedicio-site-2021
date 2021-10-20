@@ -1,6 +1,7 @@
 module.exports = {
-  reactStrictMode: true,
+  reactStrictMode: false,
   images: {
+    loader: "imgix",
     domains: ['res.cloudinary.com'],
   },
 }

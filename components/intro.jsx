@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import Image from 'next/image'
-import DedicioCoelho from "../public/images/dedicio-coelho.png";
+import DedicioCoelho from '../public/images/dedicio-coelho.png'
+import loader from '../services/loader.js'
 
 const IntroWrapper = styled.section`
   display: flex;
@@ -66,6 +67,7 @@ const Intro = (props) => {
     <IntroWrapper>
       <IntroRight>
         <Image
+          loader={loader}
           src={DedicioCoelho}
           alt="Dedicio Coelho"
           width={413}
