@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { getArticles } from "../services/articlesResource.js"
 import { useEffect, useState } from 'react'
 import styled from 'styled-components'
+import { externalLoader } from '../services/loader.js'
 
 const List = styled.ul`
   display: flex;
@@ -62,6 +63,7 @@ const Articles = (props) => {
           <ListItem key={index}>
             <Link href={article.url}>
               <StyledImage
+                loader={externalLoader}
                 src={article.social_image}
                 alt={article.title}
                 width={200}
