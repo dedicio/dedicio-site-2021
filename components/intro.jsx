@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import Image from 'next/image'
 import DedicioCoelho from '../public/images/dedicio-coelho.png'
-import loader from '../services/loader.js'
+import { loader } from '../services/loader.js'
 
 const IntroWrapper = styled.section`
   display: flex;

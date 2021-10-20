@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import styled from 'styled-components'
 import Section from './section.jsx'
-import loader from '../services/loader.js'
+import { loader } from '../services/loader.js'
 
 const Icon = ({ url, image, alt, className }) => {
   return (
@@ -29,11 +29,11 @@ const Contact = (props) => {
   return (
     <Section title={title}>
       <StyledIcon
-        url="https://linkedin.com"
+        url="https://www.linkedin.com/in/dedicio/"
         image="linkedin.svg"
         alt="Perfil no LinkedIn de Dedicio Coelho" />
       <StyledIcon
-        url="https://github.com"
+        url="https://github.com/dedicio"
         image="github.svg"
         alt="Perfil no Github de Dedicio Coelho" />
     </Section>

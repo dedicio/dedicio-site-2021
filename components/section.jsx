@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import styled from 'styled-components';
-import loader from '../services/loader.js'
+import { loader } from '../services/loader.js'
 
 const Wrapper = styled.section`
   padding: 3rem 0;

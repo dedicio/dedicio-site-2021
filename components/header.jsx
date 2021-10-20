@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import styled from 'styled-components'
 import Link from 'next/link'
-import loader from '../services/loader.js'
+import { loader } from '../services/loader.js'
 
 const HeaderWrapper = styled.div`
   padding: 1rem;
