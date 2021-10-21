@@ -23,7 +23,7 @@ const Contact = (props) => {
   return (
     <Section title={title}>
       <StyledIcon
-        url="https://linkedin.com"
+        url="https://www.linkedin.com/in/dedicio/"
         image="linkedin.svg"
         alt="Perfil no LinkedIn de Dedicio Coelho">
         <svg
@@ -39,7 +39,7 @@ const Contact = (props) => {
         </svg>
       </StyledIcon>
       <StyledIcon
-        url="https://github.com"
+        url="https://github.com/dedicio"
         image="github.svg"
         alt="Perfil no Github de Dedicio Coelho">
         <svg
