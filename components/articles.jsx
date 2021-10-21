@@ -1,9 +1,9 @@
-import Section from "./section"
-import Image from 'next/image'
-import { getArticles } from "../services/articlesResource.js"
 import { useEffect, useState } from 'react'
 import styled from 'styled-components'
+import Image from 'next/image'
+import { getArticles } from "../services/articlesResource.js"
 import { externalLoader } from '../services/loader.js'
+import Section from "./section"
 
 const List = styled.ul`
   display: flex;
