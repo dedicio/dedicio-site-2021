@@ -1,6 +1,4 @@
-import Image from 'next/image'
 import styled from 'styled-components';
-import loader from '../services/loader.js'
 
 const Wrapper = styled.section`
   padding: 3rem 0;
@@ -10,12 +8,9 @@ const Wrapper = styled.section`
 const Dot = ({ className }) => {
   return (
     <span className={className}>
-      <Image
-        loader={loader}
-        src="/images/dot.svg"
-        alt="dot"
-        width={10}
-        height={10} />
+      <svg width="10" height="10" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="5" cy="5" r="5" transform="rotate(90 5 5)" className="dot"/>
+      </svg>
     </span>
   )
 }
