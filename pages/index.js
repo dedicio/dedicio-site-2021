@@ -1,12 +1,9 @@
 import Head from 'next/head'
+import { useState } from 'react'
 import styled from 'styled-components'
-import About from '../components/about.jsx'
-import Articles from '../components/articles.jsx'
-import Contact from '../components/contact.jsx'
-import Footer from '../components/footer.jsx'
 import Header from '../components/header.jsx'
-import Intro from '../components/intro.jsx'
-import Skills from '../components/skills.jsx'
+import Footer from '../components/footer.jsx'
+import Main from '../components/main.jsx'
 
 const Container = styled.div`
   min-height: 100vh;
@@ -17,38 +14,26 @@ const Container = styled.div`
   align-items: center;
 `
 
-const Main = styled.main`
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  max-width: 940px;
-  
-  @media (min-width: 768px) {
-    padding: 5rem 0;
-  }
-`
-
 export default function Home() {
+  const [theme, setTheme] = useState('light')
+
+  const toggleTheme = () => {
+    const newTheme = theme === 'light' ? 'dark' : 'light'
+    setTheme(newTheme)
+  }
+
   return (
-    <Container>
+    <Container className={theme}>
       <Head>
         <title>Dedicio Coelho - Desenvolvedor Front-End</title>
         <meta name="description" content="Dedicio Coelho - Front-end Developer" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Header />
-
-      <Main>
-        <Intro />
-        <Skills />
-        <Articles />
-        <About />
-        <Contact />
-      </Main>
-
+      <Header
+        theme={theme}
+        onSwitchChanged={toggleTheme} />
+      <Main />
       <Footer />
     </Container>
   )
