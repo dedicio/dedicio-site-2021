@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 const FooterWrapper = styled.footer`
   padding: 1rem 0;
+  text-align: center;
 `
 
 const Footer = (props) => {
