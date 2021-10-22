@@ -33,6 +33,7 @@ export default function Home() {
       </Head>
 
       <Header
+        lang={lang}
         theme={theme}
         onSwitchChanged={toggleTheme} />
       <Main lang={lang} />
