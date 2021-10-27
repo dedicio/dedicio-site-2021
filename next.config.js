@@ -4,4 +4,5 @@ module.exports = {
     loader: 'custom',
     domains: ['res.cloudinary.com'],
   },
+  trailingSlash: true,
 }
