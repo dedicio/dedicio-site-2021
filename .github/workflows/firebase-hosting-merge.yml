@@ -15,6 +15,6 @@ jobs:
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_TESTE_A67AA }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_API_KEY }}'
           channelId: live
-          projectId: teste-a67aa
+          projectId: dedicio-website-1533226057005
