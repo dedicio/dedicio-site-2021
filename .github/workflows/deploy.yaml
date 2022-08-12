@@ -1,20 +1,31 @@
-name: push-and-deploy-to-server
-
+name: Build and Deploy
 on:
   push:
-    branches: [ main ]
-
+    branches:
+      - main
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
     steps:
-      - name: checkout repo
-        uses: actions/checkout@v2
-      - name: ssh and deploy
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USERNAME }}
-          key: ${{ secrets.SSH_SECRET_KEY }}
-          source: "."
-          target: "~/website"
+      - uses: actions/checkout@master
+      - name: Build the site static assets
+        run: npm ci && npm run build
+      - name: Deploy
+        run: |
+          which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y  )
+          which rsync || ( apt-get update -y && apt-get install rsync -y )
+          eval $(ssh-agent -s)
+          ssh-add <(echo "$SSH_PRIVATE_KEY" )
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          ssh-keyscan $SERVER_IP >> ~/.ssh/known_hosts
+          chmod 644 ~/.ssh/known_hosts
+          scp -r ./* $USER_NAME@$SERVER_IP:/var/www/html
+    env:
+      SSH_PRIVATE_KEY: ${{secrets.SSH_SECRET_KEY}}
+      SERVER_IP: ${{secrets.SSH_HOST}}
+      USER_NAME: ${{secrets.SSH_USERNAME}}
+      CI: false
