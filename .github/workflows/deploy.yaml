@@ -10,15 +10,20 @@ jobs:
       matrix:
         node-version: [18.x]
     steps:
-      - uses: actions/checkout@master
-      - name: Build the site static assets
-        run: npm ci && npm run build
-      - name: ssh and deploy
-        uses: Techie-Pi/node-vps-deployment@main
-        with:
-          remote-path: "~/deployment/staging"
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USERNAME }}
-          key: ${{ secrets.SSH_SECRET_KEY }}
-          source: "./out/*"
-          target: "/var/www/html"
+    - uses: actions/checkout@v1
+    - name: Install Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: '18.x'
+    - name: Install npm dependencies
+      run: npm install
+    - name: Run build task
+      run: npm run build --if-present
+    - name: Deploy to Server
+      uses: easingthemes/ssh-deploy@main
+      env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_SECRET_KEY }}
+          SOURCE: "out/"
+          REMOTE_HOST: ${{ secrets.SSH_HOST }}
+          REMOTE_USER: ${{ secrets.SSH_USERNAME }}
+          TARGET: "/var/www/html"
