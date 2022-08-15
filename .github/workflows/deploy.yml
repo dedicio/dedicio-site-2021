@@ -11,14 +11,13 @@ jobs:
     - name: Install Node.js
       uses: actions/setup-node@v1
       with:
-        node-version: '18.x'
+        node-version: '16.x'
     - name: Build
       run: npm ci && npm run build
     - name: Deploy to Server
       uses: easingthemes/ssh-deploy@main
       env:
         SSH_PRIVATE_KEY: ${{ secrets.SSH_SECRET_KEY }}
-        ARGS: "-rltgoDzvO --delete"
         SOURCE: "out/"
         REMOTE_HOST: ${{ secrets.SSH_HOST }}
         REMOTE_USER: ${{ secrets.SSH_USERNAME }}
