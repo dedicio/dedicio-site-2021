@@ -18,10 +18,10 @@ jobs:
     - name: Build
       run: npm ci && npm run build
     - name: Deploy to Server
-      uses: easingthemes/ssh-deploy@main
-      env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_SECRET_KEY }}
-          SOURCE: "out/"
-          REMOTE_HOST: ${{ secrets.SSH_HOST }}
-          REMOTE_USER: ${{ secrets.SSH_USERNAME }}
-          TARGET: "/var/www/html"
+      uses: marcodallasanta/ssh-scp-deploy@v1.2.0
+      with:
+        local: './out/'
+        remote: '~/'
+        host: ${{secrets.SSH_HOST}}
+        user: ${{secrets.SSH_USERNAME}}
+        key: ${{secrets.SSH_SECRET_KEY}}
