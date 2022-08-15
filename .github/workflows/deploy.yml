@@ -15,10 +15,12 @@ jobs:
     - name: Build
       run: npm ci && npm run build
     - name: Deploy to Server
-      uses: easingthemes/ssh-deploy@main
-      env:
-        SSH_PRIVATE_KEY: ${{ secrets.SSH_SECRET_KEY }}
-        SOURCE: "out/"
-        REMOTE_HOST: ${{ secrets.SSH_HOST }}
-        REMOTE_USER: ${{ secrets.SSH_USERNAME }}
-        TARGET: "/var/www/html"
+      uses: ilCollez/ssh-scp-deploy@v1.1.0
+      with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_SECRET_KEY }}
+          files: |
+              out
+          remote-path: "/var/www/html"
+          clean: true
