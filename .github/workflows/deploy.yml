@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - main
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -12,15 +13,18 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: '16.x'
-    - name: Build
-      run: npm ci && npm run build
+    - name: Install npm dependencies
+      run: npm ci
+    - name: Run build task
+      run: npm run build
     - name: Deploy to Server
-      uses: ilCollez/ssh-scp-deploy@v1.1.0
-      with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USERNAME }}
-          key: ${{ secrets.SSH_SECRET_KEY }}
-          files: |
-              out
-          remote-path: "/var/www/html"
-          clean: true
+      uses: easingthemes/ssh-deploy@main
+      env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_SECRET_KEY }}
+          ARGS: "-rltgoDzvO --delete"
+          SOURCE: "out/"
+          REMOTE_HOST: ${{ secrets.SSH_HOST }}
+          REMOTE_USER: ${{ secrets.SSH_USERNAME }}
+          TARGET: "/home"
+          EXCLUDE: "/dist/, /node_modules/"
+        
